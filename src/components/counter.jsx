@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Counter() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // This is not " nor ' its `
+    document.title = `You clicked ${count} times`;
+  });
 
   function getBadgeClasses() {
     let classes = "badge m-2 badge-";
