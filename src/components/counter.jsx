@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function Counter(props) {
-  const [value, setValue] = useState(props.value);
+  const [value, setValue] = useState(props.counter.value);
 
   useEffect(() => {
     //console.log(props);
@@ -21,7 +21,7 @@ function Counter(props) {
 
   return (
     <div>
-      <h4>Counter number {props.id}</h4>
+      <h4>Counter number {props.counter.id}</h4>
       <span className={getBadgeClasses()}>{formatCount()}</span>
       <button
         onClick={() => setValue(value + 1)}
@@ -29,7 +29,10 @@ function Counter(props) {
       >
         Increment
       </button>
-      <button onClick={props.onDelete} className="btn btn-danger btn-sm m-2">
+      <button
+        onClick={() => props.onDelete(props.counter.id)}
+        className="btn btn-danger btn-sm m-2"
+      >
         Delete
       </button>
     </div>
