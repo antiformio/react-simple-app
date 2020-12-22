@@ -10,10 +10,20 @@ function Counters() {
     { id: 4, value: 0 },
   ]);
 
+  function handleDelete(params) {
+    console.log("teste");
+    return 0;
+  }
+
   return (
     <div>
       {counters.map((counter) => (
-        <Counter key={counter.id} value={counter.value} id={counter.id} />
+        <Counter
+          key={counter.id}
+          value={counter.value}
+          id={counter.id}
+          onDelete={handleDelete}
+        />
       ))}
     </div>
   );
