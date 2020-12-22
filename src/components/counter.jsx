@@ -21,6 +21,7 @@ function Counter(props) {
 
   return (
     <div>
+      <h4>Counter number {props.id}</h4>
       <span className={getBadgeClasses()}>{formatCount()}</span>
       <button
         onClick={() => setValue(value + 1)}
