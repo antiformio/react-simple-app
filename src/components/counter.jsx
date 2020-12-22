@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from "react";
 
-function Counter() {
-  const [count, setCount] = useState(0);
+function Counter(props) {
+  const [value, setValue] = useState(props.value);
 
   useEffect(() => {
+    //console.log(props);
     // This is not " nor ' its `
-    document.title = `You clicked ${count} times`;
+    //document.title = `You clicked ${value} times`;
   });
 
   function getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += count === 0 ? "warning" : "primary";
+    classes += value === 0 ? "warning" : "primary";
     return classes;
   }
 
   function formatCount() {
-    return count === 0 ? "Zero" : count;
+    return value === 0 ? "Zero" : value;
   }
 
   return (
     <div>
       <span className={getBadgeClasses()}>{formatCount()}</span>
       <button
-        onClick={() => setCount(count + 1)}
+        onClick={() => setValue(value + 1)}
         className="btn btn-secondary btn-sm"
       >
         Increment
