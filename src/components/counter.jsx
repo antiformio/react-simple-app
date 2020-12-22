@@ -1,40 +1,29 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Counter extends Component {
-  state = {
-    count: 0,
-  };
+function Counter() {
+  const [count, setCount] = useState(0);
 
-  // Here we use an arrow function so that we can acess the keyword 'this' so
-  //    that we can then acess the state, like this.state.
-  handleIncrement = () => {
-    console.log("Increment Clicked", this);
-  };
-
-  render() {
-    return (
-      <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          onClick={this.handleIncrement}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-      </div>
-    );
-  }
-
-  getBadgeClasses() {
+  function getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += count === 0 ? "warning" : "primary";
     return classes;
   }
 
-  formatCount() {
-    const { count } = this.state;
+  function formatCount() {
     return count === 0 ? "Zero" : count;
   }
+
+  return (
+    <div>
+      <span className={getBadgeClasses()}>{formatCount()}</span>
+      <button
+        onClick={() => setCount(count + 1)}
+        className="btn btn-secondary btn-sm"
+      >
+        Increment
+      </button>
+    </div>
+  );
 }
 
 export default Counter;
