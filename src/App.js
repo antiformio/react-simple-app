@@ -6,7 +6,7 @@ import Counters from "./components/counters";
 
 function App() {
   const [counters, setCounters] = useState([
-    { id: 1, value: 4 },
+    { id: 1, value: 0 },
     { id: 2, value: 0 },
     { id: 3, value: 0 },
     { id: 4, value: 0 },
@@ -50,6 +50,24 @@ function App() {
     );
   };
 
+  const handleDecrement = (counterToBeUpdated) => {
+    setCounters(
+      counters.map((counter) =>
+        counter.id === counterToBeUpdated.id && counterToBeUpdated.value > 0
+          ? { ...counter, value: counter.value - 1 }
+          : counter
+      )
+    );
+  };
+
+  const handleAdd = () => {
+    // Concat does not change the original array, instead IT RETURNS A NEW ONE
+    //  This is the proper way to use setState, we should NEVER
+    //    modify state directly.
+    const lastId = counters[counters.length - 1].id;
+    setCounters(counters.concat({ id: lastId + 1, value: 0 }));
+  };
+
   return (
     <React.StrictMode>
       <Navbar
@@ -63,6 +81,8 @@ function App() {
           onReset={handleReset}
           onIncrement={handleIncrement}
           onDelete={handleDelete}
+          onAdd={handleAdd}
+          onDecrement={handleDecrement}
         />
       </main>
     </React.StrictMode>

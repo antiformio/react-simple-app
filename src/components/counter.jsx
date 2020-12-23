@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Counter({ counter, onDelete, onIncrement }) {
+function Counter({ counter, onDelete, onIncrement, onDecrement }) {
   function getBadgeClasses() {
     let classes = "badge m-2 badge-";
     classes += counter.value === 0 ? "warning" : "primary";
@@ -18,7 +18,13 @@ function Counter({ counter, onDelete, onIncrement }) {
         onClick={() => onIncrement(counter)}
         className="btn btn-secondary btn-sm"
       >
-        Increment
+        +
+      </button>
+      <button
+        onClick={() => onDecrement(counter)}
+        className="btn btn-dark btn-sm m-2"
+      >
+        -
       </button>
       <button
         onClick={() => onDelete(counter.id)}
