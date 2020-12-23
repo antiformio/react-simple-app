@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-
 function Counter({ counter, onDelete, onIncrement, onDecrement }) {
   function getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += counter.value === 0 ? "warning" : "primary";
-    return classes;
+    return (classes += counter.value === 0 ? "warning" : "primary");
   }
 
   function formatCount() {
