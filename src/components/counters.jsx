@@ -22,6 +22,8 @@ function Counters() {
         return {
           id: counter.id,
           value: 0,
+          // Or just value: 0:
+          // return value;
         };
       })
     );
