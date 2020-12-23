@@ -7,12 +7,6 @@ import Counters from "./components/counters";
 function App() {
   const [counters, setCounters] = useState([]);
 
-  // useEffect(() => {
-  //   //console.log(props);
-  //   // This is not " nor ' its `
-  //   // document.title = `You clicked ${value} times`;
-  // });
-
   const handleReset = () => {
     setCounters(
       counters.map((counter) => {
@@ -56,10 +50,12 @@ function App() {
   };
 
   const handleAdd = () => {
+    // If state array is empty return lastId = 0 else return the last id
+    const lastId = counters.length === 0 ? 0 : counters[counters.length - 1].id;
+
     // Concat does not change the original array, instead IT RETURNS A NEW ONE
     //  This is the proper way to use setState, we should NEVER
     //    modify state directly.
-    const lastId = counters.length === 0 ? 0 : counters[counters.length - 1].id;
     setCounters(counters.concat({ id: lastId + 1, value: 0 }));
   };
 
