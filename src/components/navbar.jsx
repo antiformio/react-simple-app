@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 
-function NavBar() {
+function NavBar({ totalCountersGreaterThanZero }) {
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="#">
-        NavBar
+        NavBar{" "}
+        <span className="badge badge-pill badge-secondary">
+          {totalCountersGreaterThanZero}
+        </span>
       </a>
     </nav>
   );

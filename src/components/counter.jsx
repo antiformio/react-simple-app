@@ -13,7 +13,6 @@ function Counter({ counter, onDelete, onIncrement }) {
 
   return (
     <div>
-      <p>Counter number {counter.id}</p>
       <span className={getBadgeClasses()}>{formatCount()}</span>
       <button
         onClick={() => onIncrement(counter)}
