@@ -5,12 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Counters from "./components/counters";
 
 function App() {
-  const [counters, setCounters] = useState([
-    { id: 1, value: 0 },
-    { id: 2, value: 0 },
-    { id: 3, value: 0 },
-    { id: 4, value: 0 },
-  ]);
+  const [counters, setCounters] = useState([]);
 
   // useEffect(() => {
   //   //console.log(props);
@@ -64,7 +59,7 @@ function App() {
     // Concat does not change the original array, instead IT RETURNS A NEW ONE
     //  This is the proper way to use setState, we should NEVER
     //    modify state directly.
-    const lastId = counters[counters.length - 1].id;
+    const lastId = counters.length === 0 ? 0 : counters[counters.length - 1].id;
     setCounters(counters.concat({ id: lastId + 1, value: 0 }));
   };
 
